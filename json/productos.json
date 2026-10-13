@@ -1,0 +1,16 @@
+[
+    {
+        "codigo": "1",
+        "nombre": "Camerata",
+        "precio_mayorista": 10.0,
+        "precio_online": 16.0,
+        "categoria": "Perfumes"
+    },
+    {
+        "codigo": "2",
+        "nombre": "aaaaa",
+        "precio_mayorista": 12.0,
+        "precio_online": 15.0,
+        "categoria": "Perfumes"
+    }
+]
