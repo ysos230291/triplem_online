@@ -623,11 +623,11 @@
                 }
                 
                 todosLosProductos = data
-                    .filter(item => item.precio_mayorista > 0)
+                    .filter(item => item.precio_online > 0)
                     .map(item => ({
                         id: item.codigo,
                         nombre: item.nombre,
-                        precio: `$${item.precio_mayorista.toFixed(2)}`,
+                        precio: `$${item.precio_online.toFixed(2)}`,
                         imagen: `img/${item.codigo}.webp`,
                         familia: item.categoria || "Sin categoría",
                         cantidad: 999
