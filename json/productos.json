@@ -1,16 +1,1297 @@
 [
     {
-        "codigo": "1",
-        "nombre": "Camerata",
-        "precio_mayorista": 10.0,
-        "precio_online": 16.0,
-        "categoria": "Perfumes"
+        "codigo": "01",
+        "nombre": "CHAMP. COCO NT(1L)",
+        "precio_mayorista": 0.0,
+        "precio_online": 6.0,
+        "categoria": "CUIDADO DEL CABELLO"
     },
     {
-        "codigo": "2",
-        "nombre": "aaaaa",
-        "precio_mayorista": 12.0,
-        "precio_online": 15.0,
-        "categoria": "Perfumes"
+        "codigo": "02",
+        "nombre": "ACOND. COCO NT(1L)",
+        "precio_mayorista": 0.0,
+        "precio_online": 6.0,
+        "categoria": "CUIDADO DEL CABELLO"
+    },
+    {
+        "codigo": "03",
+        "nombre": "CHAMP.COCO NT(500ml)",
+        "precio_mayorista": 0.0,
+        "precio_online": 3.0,
+        "categoria": "CUIDADO DEL CABELLO"
+    },
+    {
+        "codigo": "04",
+        "nombre": "ACOND. COCO NT(500ml)",
+        "precio_mayorista": 0.0,
+        "precio_online": 3.0,
+        "categoria": "CUIDADO DEL CABELLO"
+    },
+    {
+        "codigo": "05",
+        "nombre": "CHAMP. ARGÁN NT(500ml)",
+        "precio_mayorista": 0.0,
+        "precio_online": 3.0,
+        "categoria": "CUIDADO DEL CABELLO"
+    },
+    {
+        "codigo": "06",
+        "nombre": "ACOND. ARGÁN NT(500ml)",
+        "precio_mayorista": 0.0,
+        "precio_online": 3.0,
+        "categoria": "CUIDADO DEL CABELLO"
+    },
+    {
+        "codigo": "07",
+        "nombre": "SOPA POLLO OTTOMIE",
+        "precio_mayorista": 0.0,
+        "precio_online": 0.45,
+        "categoria": "ALIMENTOS"
+    },
+    {
+        "codigo": "08",
+        "nombre": "MACARRONES",
+        "precio_mayorista": 0.0,
+        "precio_online": 0.9,
+        "categoria": "ALIMENTOS"
+    },
+    {
+        "codigo": "09",
+        "nombre": "DIARIAS NARANJAS",
+        "precio_mayorista": 0.0,
+        "precio_online": 1.0,
+        "categoria": "ASEO PERSONAL"
+    },
+    {
+        "codigo": "10",
+        "nombre": "LAVAROPA LUCY (1G)",
+        "precio_mayorista": 0.0,
+        "precio_online": 12.0,
+        "categoria": "DETERGENTES"
+    },
+    {
+        "codigo": "11",
+        "nombre": "LAVAROPA LUCY (2L)",
+        "precio_mayorista": 0.0,
+        "precio_online": 7.5,
+        "categoria": "DETERGENTES"
+    },
+    {
+        "codigo": "12",
+        "nombre": "LAVA VAJILLAS NT",
+        "precio_mayorista": 0.0,
+        "precio_online": 2.0,
+        "categoria": "DETERGENTES"
+    },
+    {
+        "codigo": "13",
+        "nombre": "ATÚN",
+        "precio_mayorista": 0.0,
+        "precio_online": 2.3,
+        "categoria": "ALIMENTOS"
+    },
+    {
+        "codigo": "14",
+        "nombre": "DESODT. FOUR SEASON",
+        "precio_mayorista": 0.0,
+        "precio_online": 1.5,
+        "categoria": "DESODORANTES"
+    },
+    {
+        "codigo": "15",
+        "nombre": "DESODT. SANEX CONFORT",
+        "precio_mayorista": 0.0,
+        "precio_online": 3.0,
+        "categoria": "DESODORANTES"
+    },
+    {
+        "codigo": "16",
+        "nombre": "DESODT. SANEX CONTROL",
+        "precio_mayorista": 0.0,
+        "precio_online": 3.0,
+        "categoria": "DESODORANTES"
+    },
+    {
+        "codigo": "17",
+        "nombre": "COLON. BODY MIST NBA",
+        "precio_mayorista": 0.0,
+        "precio_online": 4.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "18",
+        "nombre": "COLON. BODY MIST JAFRA",
+        "precio_mayorista": 0.0,
+        "precio_online": 4.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "19",
+        "nombre": "COLON. BODY MIST CAMPER",
+        "precio_mayorista": 0.0,
+        "precio_online": 4.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "20",
+        "nombre": "COLON. BODY MIST CHLOE",
+        "precio_mayorista": 0.0,
+        "precio_online": 4.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "21",
+        "nombre": "COLON. BONABEL ORQUÍDEA",
+        "precio_mayorista": 0.0,
+        "precio_online": 4.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "22",
+        "nombre": "COLON. BONABEL AGUA ROSAS",
+        "precio_mayorista": 0.0,
+        "precio_online": 4.5,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "23",
+        "nombre": "COLON. BONABEL AQUA",
+        "precio_mayorista": 0.0,
+        "precio_online": 4.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "24",
+        "nombre": "COLON. BONABEL VIOLETA",
+        "precio_mayorista": 0.0,
+        "precio_online": 5.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "25",
+        "nombre": "CHAMPÚ DAILY",
+        "precio_mayorista": 0.0,
+        "precio_online": 3.0,
+        "categoria": "CUIDADO DEL CABELLO"
+    },
+    {
+        "codigo": "26",
+        "nombre": "ACOND. DAILY",
+        "precio_mayorista": 0.0,
+        "precio_online": 3.0,
+        "categoria": "CUIDADO DEL CABELLO"
+    },
+    {
+        "codigo": "27",
+        "nombre": "PERF. LAYALI",
+        "precio_mayorista": 0.0,
+        "precio_online": 25.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "28",
+        "nombre": "PERF. NOUR LE",
+        "precio_mayorista": 0.0,
+        "precio_online": 25.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "29",
+        "nombre": "PERF. PARIS LOVE",
+        "precio_mayorista": 0.0,
+        "precio_online": 6.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "30",
+        "nombre": "PERF. GOLDEN ROSE",
+        "precio_mayorista": 0.0,
+        "precio_online": 6.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "31",
+        "nombre": "PERF. CHIC GIRL",
+        "precio_mayorista": 0.0,
+        "precio_online": 6.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "32",
+        "nombre": "PERF. BLACK FLOWER",
+        "precio_mayorista": 0.0,
+        "precio_online": 6.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "33",
+        "nombre": "PERF. PRIVATE",
+        "precio_mayorista": 0.0,
+        "precio_online": 6.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "34",
+        "nombre": "PERF. STRONG",
+        "precio_mayorista": 0.0,
+        "precio_online": 6.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "35",
+        "nombre": "PERF. LEGEND",
+        "precio_mayorista": 0.0,
+        "precio_online": 6.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "36",
+        "nombre": "PERF. BLUE ESSENCE",
+        "precio_mayorista": 0.0,
+        "precio_online": 6.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "37",
+        "nombre": "ACOND. HONEY",
+        "precio_mayorista": 0.0,
+        "precio_online": 4.0,
+        "categoria": "CUIDADO DEL CABELLO"
+    },
+    {
+        "codigo": "38",
+        "nombre": "CREMA PEINAR HONEY",
+        "precio_mayorista": 0.0,
+        "precio_online": 4.0,
+        "categoria": "CUIDADO DEL CABELLO"
+    },
+    {
+        "codigo": "39",
+        "nombre": "PERF. ALICIA EDT",
+        "precio_mayorista": 0.0,
+        "precio_online": 14.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "40",
+        "nombre": "SERUM ALICIA NIAC.",
+        "precio_mayorista": 0.0,
+        "precio_online": 5.0,
+        "categoria": "SERUM PIEL"
+    },
+    {
+        "codigo": "41",
+        "nombre": "PERF. MARIPOSA ELIXIR",
+        "precio_mayorista": 0.0,
+        "precio_online": 12.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "42",
+        "nombre": "PERF. ELEMENT (H)",
+        "precio_mayorista": 0.0,
+        "precio_online": 7.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "43",
+        "nombre": "CHAMPÚ HONEY",
+        "precio_mayorista": 0.0,
+        "precio_online": 4.5,
+        "categoria": "CUIDADO DEL CABELLO"
+    },
+    {
+        "codigo": "44",
+        "nombre": "PERF. D\" HABANA (H)",
+        "precio_mayorista": 0.0,
+        "precio_online": 22.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "45",
+        "nombre": "PERF. D\" HABANA (M)",
+        "precio_mayorista": 0.0,
+        "precio_online": 28.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "46",
+        "nombre": "PERF. COMPLICE (H)",
+        "precio_mayorista": 0.0,
+        "precio_online": 10.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "47",
+        "nombre": "PERF. AMORE MÍO",
+        "precio_mayorista": 0.0,
+        "precio_online": 4.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "48",
+        "nombre": "PERF. CAMERATA",
+        "precio_mayorista": 0.0,
+        "precio_online": 13.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "49",
+        "nombre": "PERF. ROMEO JULIETA (H)",
+        "precio_mayorista": 0.0,
+        "precio_online": 20.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "50",
+        "nombre": "PERF. ROMEO JULIETA (M)",
+        "precio_mayorista": 0.0,
+        "precio_online": 20.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "51",
+        "nombre": "PERF. ROMEO JULIT CONF.(H)",
+        "precio_mayorista": 0.0,
+        "precio_online": 26.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "52",
+        "nombre": "SERUM ORO LÍQUIDO",
+        "precio_mayorista": 0.0,
+        "precio_online": 5.6,
+        "categoria": "CUIDADO DEL CABELLO"
+    },
+    {
+        "codigo": "53",
+        "nombre": "PERF. ALAS DE MARIPOSA",
+        "precio_mayorista": 0.0,
+        "precio_online": 8.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "54",
+        "nombre": "PERF. TENTACIÓN (M)",
+        "precio_mayorista": 0.0,
+        "precio_online": 5.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "55",
+        "nombre": "PERF. TENTACIÓN (H)",
+        "precio_mayorista": 0.0,
+        "precio_online": 5.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "56",
+        "nombre": "PERF. ALICIA INTENSE",
+        "precio_mayorista": 0.0,
+        "precio_online": 30.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "57",
+        "nombre": "PERF. PERLA DEL SUR",
+        "precio_mayorista": 0.0,
+        "precio_online": 12.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "58",
+        "nombre": "PERF. MALECÓN HABANERO",
+        "precio_mayorista": 0.0,
+        "precio_online": 12.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "59",
+        "nombre": "PERF. NAO AQUA",
+        "precio_mayorista": 0.0,
+        "precio_online": 13.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "60",
+        "nombre": "PERF. EVA",
+        "precio_mayorista": 0.0,
+        "precio_online": 7.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "61",
+        "nombre": "MASCARILLA MATIZADORA",
+        "precio_mayorista": 0.0,
+        "precio_online": 12.0,
+        "categoria": "CUIDADO DEL CABELLO"
+    },
+    {
+        "codigo": "62",
+        "nombre": "ACOND. SEDA",
+        "precio_mayorista": 0.0,
+        "precio_online": 2.5,
+        "categoria": "CUIDADO DEL CABELLO"
+    },
+    {
+        "codigo": "63",
+        "nombre": "BIOFORTALECEDOR CABELLO",
+        "precio_mayorista": 0.0,
+        "precio_online": 4.5,
+        "categoria": "CUIDADO DEL CABELLO"
+    },
+    {
+        "codigo": "64",
+        "nombre": "DESOD. REX. V8",
+        "precio_mayorista": 0.0,
+        "precio_online": 3.0,
+        "categoria": "DESODORANTES"
+    },
+    {
+        "codigo": "65",
+        "nombre": "DESOD. REX. 3X",
+        "precio_mayorista": 0.0,
+        "precio_online": 3.0,
+        "categoria": "DESODORANTES"
+    },
+    {
+        "codigo": "66",
+        "nombre": "CREMA PIEL KARITÉ",
+        "precio_mayorista": 0.0,
+        "precio_online": 3.0,
+        "categoria": "CREMAS DE PIEL"
+    },
+    {
+        "codigo": "67",
+        "nombre": "CREMA PIEL ARGÁN",
+        "precio_mayorista": 0.0,
+        "precio_online": 3.0,
+        "categoria": "CREMAS DE PIEL"
+    },
+    {
+        "codigo": "68",
+        "nombre": "SERUM VIT E (facial)",
+        "precio_mayorista": 0.0,
+        "precio_online": 3.6,
+        "categoria": "SERUM PIEL"
+    },
+    {
+        "codigo": "69",
+        "nombre": "JABÓN LAVAR (amarillo)",
+        "precio_mayorista": 0.0,
+        "precio_online": 0.7,
+        "categoria": "JABONES"
+    },
+    {
+        "codigo": "70",
+        "nombre": "JABÓN LAVAR (Blanco)",
+        "precio_mayorista": 0.0,
+        "precio_online": 0.8,
+        "categoria": "JABONES"
+    },
+    {
+        "codigo": "71",
+        "nombre": "PASTA DENTAL SORÍE",
+        "precio_mayorista": 0.0,
+        "precio_online": 1.6,
+        "categoria": "ASEO PERSONAL"
+    },
+    {
+        "codigo": "72",
+        "nombre": "DETERG. GRANEL (Sacos)",
+        "precio_mayorista": 0.0,
+        "precio_online": 45.0,
+        "categoria": "DETERGENTES"
+    },
+    {
+        "codigo": "73",
+        "nombre": "DETERG. BOLSAS",
+        "precio_mayorista": 0.0,
+        "precio_online": 2.0,
+        "categoria": "DETERGENTES"
+    },
+    {
+        "codigo": "74",
+        "nombre": "DESENGRASANTE",
+        "precio_mayorista": 0.0,
+        "precio_online": 5.0,
+        "categoria": "ASEO DEL HOGAR"
+    },
+    {
+        "codigo": "75",
+        "nombre": "ESPONJA FREGAR",
+        "precio_mayorista": 0.0,
+        "precio_online": 0.3,
+        "categoria": "ASEO DEL HOGAR"
+    },
+    {
+        "codigo": "76",
+        "nombre": "DIARIAS VERDES",
+        "precio_mayorista": 0.0,
+        "precio_online": 2.0,
+        "categoria": "ASEO PERSONAL"
+    },
+    {
+        "codigo": "77",
+        "nombre": "BOTOX VEGANO",
+        "precio_mayorista": 0.0,
+        "precio_online": 12.0,
+        "categoria": "CUIDADO DEL CABELLO"
+    },
+    {
+        "codigo": "78",
+        "nombre": "MAYONESA CLÁSICA",
+        "precio_mayorista": 0.0,
+        "precio_online": 5.0,
+        "categoria": "ALIMENTOS"
+    },
+    {
+        "codigo": "79",
+        "nombre": "MAYONESA LIGHT",
+        "precio_mayorista": 0.0,
+        "precio_online": 4.5,
+        "categoria": "ALIMENTOS"
+    },
+    {
+        "codigo": "80",
+        "nombre": "SALSA SOYA (150ml)",
+        "precio_mayorista": 0.0,
+        "precio_online": 2.0,
+        "categoria": "ALIMENTOS"
+    },
+    {
+        "codigo": "81",
+        "nombre": "SALSA SOYA (1750ml)",
+        "precio_mayorista": 0.0,
+        "precio_online": 6.0,
+        "categoria": "ALIMENTOS"
+    },
+    {
+        "codigo": "82",
+        "nombre": "SALSA ADEREZO",
+        "precio_mayorista": 0.0,
+        "precio_online": 3.0,
+        "categoria": "ALIMENTOS"
+    },
+    {
+        "codigo": "83",
+        "nombre": "PASTA TOMATE (3kg)",
+        "precio_mayorista": 0.0,
+        "precio_online": 10.0,
+        "categoria": "ALIMENTOS"
+    },
+    {
+        "codigo": "84",
+        "nombre": "MAÍZ DULCE",
+        "precio_mayorista": 0.0,
+        "precio_online": 1.7,
+        "categoria": "ALIMENTOS"
+    },
+    {
+        "codigo": "85",
+        "nombre": "KETCHUP",
+        "precio_mayorista": 0.0,
+        "precio_online": 2.0,
+        "categoria": "ALIMENTOS"
+    },
+    {
+        "codigo": "86",
+        "nombre": "MOSTAZA",
+        "precio_mayorista": 0.0,
+        "precio_online": 2.0,
+        "categoria": "ALIMENTOS"
+    },
+    {
+        "codigo": "87",
+        "nombre": "ARROZ",
+        "precio_mayorista": 0.0,
+        "precio_online": 2.0,
+        "categoria": "ALIMENTOS"
+    },
+    {
+        "codigo": "88",
+        "nombre": "CAFÉ EXPRESSO",
+        "precio_mayorista": 0.0,
+        "precio_online": 5.0,
+        "categoria": "ALIMENTOS"
+    },
+    {
+        "codigo": "89",
+        "nombre": "ESCOBAS",
+        "precio_mayorista": 0.0,
+        "precio_online": 2.0,
+        "categoria": "ASEO DEL HOGAR"
+    },
+    {
+        "codigo": "90",
+        "nombre": "LECHE POLVO LELA",
+        "precio_mayorista": 0.0,
+        "precio_online": 8.0,
+        "categoria": "ALIMENTOS"
+    },
+    {
+        "codigo": "91",
+        "nombre": "REFRESCO LIMÓN",
+        "precio_mayorista": 0.0,
+        "precio_online": 2.0,
+        "categoria": "ALIMENTOS"
+    },
+    {
+        "codigo": "92",
+        "nombre": "REFRESCO MATE",
+        "precio_mayorista": 0.0,
+        "precio_online": 2.0,
+        "categoria": "ALIMENTOS"
+    },
+    {
+        "codigo": "93",
+        "nombre": "AZÚCAR BLANCA",
+        "precio_mayorista": 0.0,
+        "precio_online": 2.0,
+        "categoria": "ALIMENTOS"
+    },
+    {
+        "codigo": "94",
+        "nombre": "MEDIAS TOB. (H)",
+        "precio_mayorista": 0.0,
+        "precio_online": 0.25,
+        "categoria": "CONFECCIONES TEXTILES"
+    },
+    {
+        "codigo": "95",
+        "nombre": "PLANTILLAS (M)",
+        "precio_mayorista": 0.0,
+        "precio_online": 0.45,
+        "categoria": "CONFECCIONES TEXTILES"
+    },
+    {
+        "codigo": "96",
+        "nombre": "MEDIAS DE SEÑOR",
+        "precio_mayorista": 0.0,
+        "precio_online": 0.4,
+        "categoria": "CONFECCIONES TEXTILES"
+    },
+    {
+        "codigo": "97",
+        "nombre": "TOALLAS COCINA",
+        "precio_mayorista": 0.0,
+        "precio_online": 0.6,
+        "categoria": "CONFECCIONES TEXTILES"
+    },
+    {
+        "codigo": "98",
+        "nombre": "CALZONCILLOS",
+        "precio_mayorista": 0.0,
+        "precio_online": 1.5,
+        "categoria": "CONFECCIONES TEXTILES"
+    },
+    {
+        "codigo": "99",
+        "nombre": "BOLSA VIMA",
+        "precio_mayorista": 0.0,
+        "precio_online": 0.4,
+        "categoria": "CONFECCIONES TEXTILES"
+    },
+    {
+        "codigo": "100",
+        "nombre": "FRASADA DE PISO",
+        "precio_mayorista": 0.0,
+        "precio_online": 0.7,
+        "categoria": "ASEO DEL HOGAR"
+    },
+    {
+        "codigo": "101",
+        "nombre": "TUBOS LED",
+        "precio_mayorista": 0.0,
+        "precio_online": 2.0,
+        "categoria": "ASEO DEL HOGAR"
+    },
+    {
+        "codigo": "102",
+        "nombre": "MÁQUINA AFEITAR",
+        "precio_mayorista": 0.0,
+        "precio_online": 0.25,
+        "categoria": "ASEO PERSONAL"
+    },
+    {
+        "codigo": "103",
+        "nombre": "CEPILLO DENTAL",
+        "precio_mayorista": 0.0,
+        "precio_online": 0.3,
+        "categoria": "ASEO PERSONAL"
+    },
+    {
+        "codigo": "104",
+        "nombre": "CEPILLO LAVAR",
+        "precio_mayorista": 0.0,
+        "precio_online": 0.8,
+        "categoria": "ASEO DEL HOGAR"
+    },
+    {
+        "codigo": "105",
+        "nombre": "YOGURT MACEDONIA",
+        "precio_mayorista": 0.0,
+        "precio_online": 0.7,
+        "categoria": "ALIMENTOS"
+    },
+    {
+        "codigo": "106",
+        "nombre": "YOGURT NATURAL",
+        "precio_mayorista": 0.0,
+        "precio_online": 0.7,
+        "categoria": "ALIMENTOS"
+    },
+    {
+        "codigo": "107",
+        "nombre": "YOGURT PLÁTANO",
+        "precio_mayorista": 0.0,
+        "precio_online": 0.7,
+        "categoria": "ALIMENTOS"
+    },
+    {
+        "codigo": "108",
+        "nombre": "YOGURT FRESA",
+        "precio_mayorista": 0.0,
+        "precio_online": 0.7,
+        "categoria": "ALIMENTOS"
+    },
+    {
+        "codigo": "109",
+        "nombre": "PAPAS PREFRITAS",
+        "precio_mayorista": 0.0,
+        "precio_online": 5.0,
+        "categoria": "ALIMENTOS"
+    },
+    {
+        "codigo": "110",
+        "nombre": "GEL MOCO GORILA",
+        "precio_mayorista": 0.0,
+        "precio_online": 3.2,
+        "categoria": "CUIDADO DEL CABELLO"
+    },
+    {
+        "codigo": "111",
+        "nombre": "TALCO",
+        "precio_mayorista": 0.0,
+        "precio_online": 3.4,
+        "categoria": "ASEO PERSONAL"
+    },
+    {
+        "codigo": "112",
+        "nombre": "DETERG. LÍQ. LIMÓN",
+        "precio_mayorista": 0.0,
+        "precio_online": 1.0,
+        "categoria": "ASEO DEL HOGAR"
+    },
+    {
+        "codigo": "113",
+        "nombre": "GEL BAÑO DAILY",
+        "precio_mayorista": 0.0,
+        "precio_online": 2.0,
+        "categoria": "ASEO PERSONAL"
+    },
+    {
+        "codigo": "114",
+        "nombre": "DIARIAS ROSADAS",
+        "precio_mayorista": 0.0,
+        "precio_online": 2.0,
+        "categoria": "ASEO PERSONAL"
+    },
+    {
+        "codigo": "115",
+        "nombre": "ACEITE (Galón)",
+        "precio_mayorista": 0.0,
+        "precio_online": 100.0,
+        "categoria": "ALIMENTOS"
+    },
+    {
+        "codigo": "116",
+        "nombre": "VINAGRE",
+        "precio_mayorista": 0.0,
+        "precio_online": 0.45,
+        "categoria": "ALIMENTOS"
+    },
+    {
+        "codigo": "117",
+        "nombre": "VINO SECO",
+        "precio_mayorista": 0.0,
+        "precio_online": 0.8,
+        "categoria": "ALIMENTOS"
+    },
+    {
+        "codigo": "118",
+        "nombre": "JUGO DE LIMÓN",
+        "precio_mayorista": 0.0,
+        "precio_online": 0.45,
+        "categoria": "ALIMENTOS"
+    },
+    {
+        "codigo": "119",
+        "nombre": "CHAMPÚ KIN (Pelo graso)",
+        "precio_mayorista": 0.0,
+        "precio_online": 4.4,
+        "categoria": "CUIDADO DEL CABELLO"
+    },
+    {
+        "codigo": "120",
+        "nombre": "QUESO GOUDA",
+        "precio_mayorista": 0.0,
+        "precio_online": 35.0,
+        "categoria": "ALIMENTOS"
+    },
+    {
+        "codigo": "121",
+        "nombre": "CHAMPÚ ALOE PLUS",
+        "precio_mayorista": 0.0,
+        "precio_online": 3.0,
+        "categoria": "CUIDADO DEL CABELLO"
+    },
+    {
+        "codigo": "122",
+        "nombre": "ACOND. ALOE PLUS",
+        "precio_mayorista": 0.0,
+        "precio_online": 3.0,
+        "categoria": "CUIDADO DEL CABELLO"
+    },
+    {
+        "codigo": "123",
+        "nombre": "CHAMPÚ SEDA",
+        "precio_mayorista": 0.0,
+        "precio_online": 3.0,
+        "categoria": "CUIDADO DEL CABELLO"
+    },
+    {
+        "codigo": "124",
+        "nombre": "PERF. ELEMENT (M)",
+        "precio_mayorista": 0.0,
+        "precio_online": 7.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "125",
+        "nombre": "PERF. MARIPOSA ABSOLU",
+        "precio_mayorista": 0.0,
+        "precio_online": 12.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "126",
+        "nombre": "PERF. NAO",
+        "precio_mayorista": 0.0,
+        "precio_online": 10.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "127",
+        "nombre": "PERF.  IMPACTO (H)",
+        "precio_mayorista": 0.0,
+        "precio_online": 12.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "128",
+        "nombre": "PERF.  IMPACTO (M)",
+        "precio_mayorista": 0.0,
+        "precio_online": 12.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "129",
+        "nombre": "PERF. VARADERO",
+        "precio_mayorista": 0.0,
+        "precio_online": 9.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "130",
+        "nombre": "PERF. PUERTO DE SAGUA",
+        "precio_mayorista": 0.0,
+        "precio_online": 9.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "131",
+        "nombre": "DESOD. BAMBÚ",
+        "precio_mayorista": 0.0,
+        "precio_online": 1.5,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "132",
+        "nombre": "PERF. BLUE MOON",
+        "precio_mayorista": 0.0,
+        "precio_online": 8.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "133",
+        "nombre": "PERF. VEGUERO IN BLACK",
+        "precio_mayorista": 0.0,
+        "precio_online": 14.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "134",
+        "nombre": "PERF. MARIPOSA TRAD.",
+        "precio_mayorista": 0.0,
+        "precio_online": 13.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "135",
+        "nombre": "CHAMPÚ ORO LÍQ.",
+        "precio_mayorista": 0.0,
+        "precio_online": 5.0,
+        "categoria": "CUIDADO DEL CABELLO"
+    },
+    {
+        "codigo": "136",
+        "nombre": "MASCARRILLA ORO LÍQ.",
+        "precio_mayorista": 0.0,
+        "precio_online": 5.0,
+        "categoria": "CUIDADO DEL CABELLO"
+    },
+    {
+        "codigo": "137",
+        "nombre": "CREMA PEINAR ORO LÍQ.",
+        "precio_mayorista": 0.0,
+        "precio_online": 4.0,
+        "categoria": "CUIDADO DEL CABELLO"
+    },
+    {
+        "codigo": "138",
+        "nombre": "PERF. REBELDE",
+        "precio_mayorista": 0.0,
+        "precio_online": 8.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "139",
+        "nombre": "PERF. COMPLICE (M)",
+        "precio_mayorista": 0.0,
+        "precio_online": 8.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "140",
+        "nombre": "COLON. JAZMÍN RADIANTE",
+        "precio_mayorista": 0.0,
+        "precio_online": 5.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "141",
+        "nombre": "COLON. AQUA INTENSE",
+        "precio_mayorista": 0.0,
+        "precio_online": 5.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "142",
+        "nombre": "COLON. ROSAS BLANCAS",
+        "precio_mayorista": 0.0,
+        "precio_online": 5.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "143",
+        "nombre": "PERF. VEGUERO",
+        "precio_mayorista": 0.0,
+        "precio_online": 12.0,
+        "categoria": "PERFUMERÍA"
+    },
+    {
+        "codigo": "144",
+        "nombre": "TOALLAS HÚMEDAS",
+        "precio_mayorista": 0.0,
+        "precio_online": 1.7,
+        "categoria": "ASEO PERSONAL"
+    },
+    {
+        "codigo": "145",
+        "nombre": "PICADILLO (Tubo)",
+        "precio_mayorista": 0.0,
+        "precio_online": 1.6,
+        "categoria": "ALIMENTOS"
+    },
+    {
+        "codigo": "147",
+        "nombre": "CREMA CHOCOL AVELLANA",
+        "precio_mayorista": 0.0,
+        "precio_online": 3.0,
+        "categoria": "ALIMENTOS"
+    },
+    {
+        "codigo": "148",
+        "nombre": "CREMA CHOCOL OSCURO",
+        "precio_mayorista": 0.0,
+        "precio_online": 3.0,
+        "categoria": "ALIMENTOS"
+    },
+    {
+        "codigo": "149",
+        "nombre": "JABÓN NACAR",
+        "precio_mayorista": 0.0,
+        "precio_online": 0.84,
+        "categoria": "JABONES"
+    },
+    {
+        "codigo": "150",
+        "nombre": "BOTOX COCO",
+        "precio_mayorista": 0.0,
+        "precio_online": 10.0,
+        "categoria": "CUIDADO DEL CABELLO"
+    },
+    {
+        "codigo": "151",
+        "nombre": "LIMPIA SUELOS",
+        "precio_mayorista": 0.0,
+        "precio_online": 2.5,
+        "categoria": "ASEO DEL HOGAR"
+    },
+    {
+        "codigo": "152",
+        "nombre": "JUEG.CHAP-ACOD VIT B (14onz)",
+        "precio_mayorista": 0.0,
+        "precio_online": 5.0,
+        "categoria": "CUIDADO DEL CABELLO"
+    },
+    {
+        "codigo": "153",
+        "nombre": "JUEG. CHAP-ACOD. COCONUT(14onz)",
+        "precio_mayorista": 0.0,
+        "precio_online": 5.0,
+        "categoria": "CUIDADO DEL CABELLO"
+    },
+    {
+        "codigo": "154",
+        "nombre": "JUEG. CHAP-ACOD ARGÁN (14onz)",
+        "precio_mayorista": 0.0,
+        "precio_online": 5.0,
+        "categoria": "CUIDADO DEL CABELLO"
+    },
+    {
+        "codigo": "158",
+        "nombre": "REPELENTE MOSQUITO (Blanco)",
+        "precio_mayorista": 0.0,
+        "precio_online": 1.5,
+        "categoria": "ASEO PERSONAL"
+    },
+    {
+        "codigo": "159",
+        "nombre": "ESPUMA AFEITAR (verde)",
+        "precio_mayorista": 0.0,
+        "precio_online": 6.0,
+        "categoria": "ASEO PERSONAL"
+    },
+    {
+        "codigo": "160",
+        "nombre": "ESPUMA AFEITAR (Azúl)",
+        "precio_mayorista": 0.0,
+        "precio_online": 5.0,
+        "categoria": "ASEO PERSONAL"
+    },
+    {
+        "codigo": "161",
+        "nombre": "GEL BAÑO AMALFI (1250ml)",
+        "precio_mayorista": 0.0,
+        "precio_online": 6.0,
+        "categoria": "ASEO PERSONAL"
+    },
+    {
+        "codigo": "162",
+        "nombre": "GEL BAÑO AMALFI (750ml)",
+        "precio_mayorista": 0.0,
+        "precio_online": 5.0,
+        "categoria": "ASEO PERSONAL"
+    },
+    {
+        "codigo": "163",
+        "nombre": "INTIMAS",
+        "precio_mayorista": 0.0,
+        "precio_online": 2.8,
+        "categoria": "ASEO PERSONAL"
+    },
+    {
+        "codigo": "164",
+        "nombre": "MAYONESA VIMA",
+        "precio_mayorista": 0.0,
+        "precio_online": 2.5,
+        "categoria": "ALIMENTOS"
+    },
+    {
+        "codigo": "165",
+        "nombre": "PINTURA COCOA",
+        "precio_mayorista": 0.0,
+        "precio_online": 30.0,
+        "categoria": "PINTURAS"
+    },
+    {
+        "codigo": "166",
+        "nombre": "PINTURA AMARILLA",
+        "precio_mayorista": 0.0,
+        "precio_online": 30.0,
+        "categoria": "PINTURAS"
+    },
+    {
+        "codigo": "167",
+        "nombre": "PERLAS OLOR",
+        "precio_mayorista": 0.0,
+        "precio_online": 0.4,
+        "categoria": "ASEO DEL HOGAR"
+    },
+    {
+        "codigo": "168",
+        "nombre": "PASTA DENTAL POWER",
+        "precio_mayorista": 0.0,
+        "precio_online": 1.5,
+        "categoria": "ASEO PERSONAL"
+    },
+    {
+        "codigo": "169",
+        "nombre": "PASTA DENTAL COLGATE",
+        "precio_mayorista": 0.0,
+        "precio_online": 1.4,
+        "categoria": "ASEO PERSONAL"
+    },
+    {
+        "codigo": "170",
+        "nombre": "JABÓN CARBÓN",
+        "precio_mayorista": 0.0,
+        "precio_online": 0.9,
+        "categoria": "JABONES"
+    },
+    {
+        "codigo": "171",
+        "nombre": "DESOD. REX. BAMBÚ",
+        "precio_mayorista": 0.0,
+        "precio_online": 3.0,
+        "categoria": "DESODORANTES"
+    },
+    {
+        "codigo": "172",
+        "nombre": "DEOD. REX. ACTIVE",
+        "precio_mayorista": 0.0,
+        "precio_online": 3.0,
+        "categoria": "DESODORANTES"
+    },
+    {
+        "codigo": "173",
+        "nombre": "CREMA PIEL ALICIA HIDRT",
+        "precio_mayorista": 0.0,
+        "precio_online": 3.0,
+        "categoria": "CREMAS DE PIEL"
+    },
+    {
+        "codigo": "174",
+        "nombre": "POMOS PERLAS OLOR",
+        "precio_mayorista": 0.0,
+        "precio_online": 5.0,
+        "categoria": "ASEO DEL HOGAR"
+    },
+    {
+        "codigo": "175",
+        "nombre": "CERA CAPILAR",
+        "precio_mayorista": 0.0,
+        "precio_online": 4.0,
+        "categoria": "CUIDADO DEL CABELLO"
+    },
+    {
+        "codigo": "176",
+        "nombre": "CREMA FACIAL KAOYO",
+        "precio_mayorista": 0.0,
+        "precio_online": 2.5,
+        "categoria": "CREMAS DE PIEL"
+    },
+    {
+        "codigo": "177",
+        "nombre": "ACEITE CORPORAL KAOYO",
+        "precio_mayorista": 0.0,
+        "precio_online": 4.0,
+        "categoria": "CREMAS DE PIEL"
+    },
+    {
+        "codigo": "178",
+        "nombre": "EXFOLIANTE KAOYO",
+        "precio_mayorista": 0.0,
+        "precio_online": 3.0,
+        "categoria": "CREMAS DE PIEL"
+    },
+    {
+        "codigo": "179",
+        "nombre": "CREMA KAOYO (300g)",
+        "precio_mayorista": 0.0,
+        "precio_online": 3.0,
+        "categoria": "CREMAS DE PIEL"
+    },
+    {
+        "codigo": "180",
+        "nombre": "CREMA KAOYO (650g)",
+        "precio_mayorista": 0.0,
+        "precio_online": 4.0,
+        "categoria": "CREMAS DE PIEL"
+    },
+    {
+        "codigo": "181",
+        "nombre": "DERIZ",
+        "precio_mayorista": 0.0,
+        "precio_online": 2.0,
+        "categoria": "CUIDADO DEL CABELLO"
+    },
+    {
+        "codigo": "182",
+        "nombre": "JUEGOS SKALA",
+        "precio_mayorista": 0.0,
+        "precio_online": 9.0,
+        "categoria": "CUIDADO DEL CABELLO"
+    },
+    {
+        "codigo": "183",
+        "nombre": "POTE SKALA (1kg)",
+        "precio_mayorista": 0.0,
+        "precio_online": 9.0,
+        "categoria": "CUIDADO DEL CABELLO"
+    },
+    {
+        "codigo": "184",
+        "nombre": "SET CAPILAR DISNEY",
+        "precio_mayorista": 0.0,
+        "precio_online": 8.0,
+        "categoria": "CUIDADO DEL CABELLO"
+    },
+    {
+        "codigo": "185",
+        "nombre": "JABÓN LOLEO (75g)",
+        "precio_mayorista": 0.0,
+        "precio_online": 0.8,
+        "categoria": "JABONES"
+    },
+    {
+        "codigo": "186",
+        "nombre": "GALLETAS CHOCOLATE",
+        "precio_mayorista": 0.0,
+        "precio_online": 18.0,
+        "categoria": "ALIMENTOS"
+    },
+    {
+        "codigo": "187",
+        "nombre": "JUEG CHAP-ACOD ROSAS (14onz)",
+        "precio_mayorista": 0.0,
+        "precio_online": 5.0,
+        "categoria": "CUIDADO DEL CABELLO"
+    },
+    {
+        "codigo": "189",
+        "nombre": "CREMA HUMECT DERMOPLACEN",
+        "precio_mayorista": 0.0,
+        "precio_online": 5.0,
+        "categoria": "CREMAS DE PIEL"
+    },
+    {
+        "codigo": "190",
+        "nombre": "GEL PIGMENTANTE",
+        "precio_mayorista": 0.0,
+        "precio_online": 7.0,
+        "categoria": "CREMAS DE PIEL"
     }
 ]
