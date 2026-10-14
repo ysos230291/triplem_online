@@ -17,13 +17,9 @@
     
     <!-- 🔥 CARGAR TODO CON TIMESTAMP PARA EVITAR CACHÉ 🔥 -->
     <script>
-        // Forzar que todos los recursos se carguen con timestamp
         (function() {
             const ts = Date.now();
-            
-            // Reescribir links de CSS si los hubiera
             document.addEventListener('DOMContentLoaded', function() {
-                // Agregar timestamp a todas las imágenes
                 document.querySelectorAll('img[src]').forEach(img => {
                     if (!img.src.includes('data:')) {
                         const separator = img.src.includes('?') ? '&' : '?';
@@ -338,7 +334,7 @@
 
     <script>
         // CONSTANTES
-        const CARRITO_STORAGE_KEY = 'triplem_carrito';
+        const CARRITO_STORAGE_KEY = 'triplem_carrito_online';
         
         // Estado global
         let todosLosProductos = [];
@@ -369,6 +365,7 @@
             actualizarContadorCarrito();
         }
 
+        // ✅ CAMBIO: solo cuenta productos DIFERENTES (items únicos)
         function actualizarContadorCarrito() {
             const carrito = obtenerCarrito();
             const totalItemsUnicos = carrito.items.length;
@@ -384,37 +381,42 @@
         }
 
         window.cambiarCantidad = function(id, delta) {
+            id = String(id);
             const cantidadSpan = document.getElementById(`cantidad-${id}`);
             if (!cantidadSpan) return;
-            let cantidadActual = parseInt(cantidadSpan.textContent);
+            let cantidadActual = parseInt(cantidadSpan.textContent) || 1;
             let nuevaCantidad = cantidadActual + delta;
             if (nuevaCantidad < 1) nuevaCantidad = 1;
             if (nuevaCantidad > 99) nuevaCantidad = 99;
             cantidadSpan.textContent = nuevaCantidad;
             if (!window.cantidadesProductos) window.cantidadesProductos = {};
             window.cantidadesProductos[id] = nuevaCantidad;
-        }
+        };
 
         window.agregarAlCarrito = function(id) {
+            id = String(id);
             let cantidad = 1;
             if (window.cantidadesProductos && window.cantidadesProductos[id]) {
                 cantidad = window.cantidadesProductos[id];
             } else {
                 const span = document.getElementById(`cantidad-${id}`);
-                if (span) cantidad = parseInt(span.textContent);
+                if (span) cantidad = parseInt(span.textContent) || 1;
             }
             
-            const producto = todosLosProductos.find(p => p.id === id);
-            if (!producto) return;
+            const producto = todosLosProductos.find(p => String(p.id) === id);
+            if (!producto) {
+                alert('❌ Producto no encontrado.');
+                return;
+            }
             
             const carrito = obtenerCarrito();
-            const existingItem = carrito.items.find(item => item.id === id);
+            const existingItem = carrito.items.find(item => String(item.id) === id);
             
             if (existingItem) {
                 existingItem.cantidad += cantidad;
             } else {
                 carrito.items.push({
-                    id: id,
+                    id: producto.id,
                     nombre: producto.nombre,
                     precio: producto.precio,
                     imagen: producto.imagen,
@@ -426,7 +428,7 @@
             guardarCarrito(carrito);
             alert(`✅ Agregado al carrito:\n${producto.nombre}\nCantidad: ${cantidad}\nPrecio: ${producto.precio}`);
             actualizarContadorCarrito();
-        }
+        };
 
         // --- Renderizado de tarjetas de CATEGORÍA ---
         function renderFamilias(familiasFiltradas = null) {
@@ -493,16 +495,16 @@
                         <img alt="${p.nombre}" class="product-image w-full h-full object-contain group-hover:scale-105 transition-transform duration-700" src="${p.imagen}?t=${timestamp}" onerror="this.src='https://placehold.co/600x800?text=Triple+M'"/>
                     </div>
                     <div class="quantity-selector">
-                        <button class="quantity-btn" onclick="cambiarCantidad(${p.id}, -1)">−</button>
+                        <button class="quantity-btn" onclick="cambiarCantidad('${p.id}', -1)">−</button>
                         <span class="quantity-value" id="cantidad-${p.id}">${window.cantidadesProductos[p.id]}</span>
-                        <button class="quantity-btn" onclick="cambiarCantidad(${p.id}, 1)">+</button>
+                        <button class="quantity-btn" onclick="cambiarCantidad('${p.id}', 1)">+</button>
                     </div>
                     <div class="flex flex-col gap-2 mb-4">
                         <h3 class="font-headline text-xl font-bold tracking-tight text-on-surface">${p.nombre}</h3>
                         <p class="text-primary font-semibold text-lg">${p.precio}</p>
                         <p class="text-primary/70 font-semibold text-sm uppercase tracking-wide">${p.familia}</p>
                     </div>
-                    <button class="w-full py-4 bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold uppercase tracking-widest text-xs hover:brightness-110 active:scale-95 transition-all" onclick="agregarAlCarrito(${p.id})">AGREGAR AL CARRITO</button>
+                    <button class="w-full py-4 bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold uppercase tracking-widest text-xs hover:brightness-110 active:scale-95 transition-all" onclick="agregarAlCarrito('${p.id}')">AGREGAR AL CARRITO</button>
                 </article>
             `).join('');
             
@@ -568,7 +570,6 @@
 
         // --- 🔥 FUNCIÓN REFRESH - RECARGA SIN CACHÉ 🔥 ---
         function recargarSinCache() {
-            // Mostrar mensaje
             refreshMessage.classList.remove('hidden');
             const msgDiv = refreshMessage.querySelector('div');
             if (msgDiv) {
@@ -578,13 +579,11 @@
             refreshCacheBtn.disabled = true;
             refreshCacheBtn.style.opacity = '0.5';
             
-            // Limpiar storages
             try {
                 localStorage.clear();
                 sessionStorage.clear();
             } catch(e) {}
             
-            // Limpiar caches del navegador
             if ('caches' in window) {
                 caches.keys().then(function(names) {
                     for (let name of names) {
@@ -593,10 +592,8 @@
                 });
             }
             
-            // 🔥 RECARGAR FORZADO CON TIMESTAMP
             setTimeout(() => {
                 const timestamp = Date.now();
-                // Recargar la misma página con un parámetro único
                 window.location.href = window.location.pathname + '?nocache=' + timestamp;
             }, 500);
         }
@@ -625,7 +622,7 @@
                 todosLosProductos = data
                     .filter(item => item.precio_online > 0)
                     .map(item => ({
-                        id: item.codigo,
+                        id: String(item.codigo),
                         nombre: item.nombre,
                         precio: `$${item.precio_online.toFixed(2)}`,
                         imagen: `img/${item.codigo}.webp`,
