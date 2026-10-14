@@ -93,7 +93,7 @@
         .tonal-transition {
             background: linear-gradient(to bottom, #131313, rgba(19, 19, 19, 0));
         }
-        .whatsapp-float {
+        .telegram-float {
             position: fixed;
             bottom: 24px;
             right: 24px;
@@ -107,18 +107,19 @@
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             z-index: 100;
             overflow: hidden;
+            background: #229ED9;
         }
-        .whatsapp-float:hover {
+        .telegram-float:hover {
             transform: scale(1.1);
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
         }
-        .whatsapp-float img {
+        .telegram-float img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
         @media (max-width: 768px) {
-            .whatsapp-float {
+            .telegram-float {
                 bottom: 80px;
             }
         }
@@ -132,6 +133,14 @@
         }
         body {
             min-height: max(884px, 100dvh);
+        }
+        .spinner {
+            animation: spin 1s linear infinite;
+            display: inline-block;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -155,7 +164,6 @@
                     <p class="font-body text-on-surface-variant/80 text-lg leading-relaxed max-w-xl">Complete su adquisición proporcionando sus datos para la entrega por conserje privado.</p>
                 </section>
                 <section class="space-y-10">
-                    <!-- Formulario de quien RECIBE -->
                     <div class="flex items-center gap-3">
                         <span class="w-8 h-[1px] bg-primary"></span>
                         <h2 class="font-label text-xs uppercase tracking-[0.3em] text-primary">DATOS DE QUIEN RECIBE LA COMPRA</h2>
@@ -183,7 +191,6 @@
                         </div>
                     </form>
 
-                    <!-- Sección: Datos de quien ENVÍA (REMITENTE) -->
                     <div class="flex items-center gap-3 mt-8">
                         <span class="w-8 h-[1px] bg-primary"></span>
                         <h2 class="font-label text-xs uppercase tracking-[0.3em] text-primary">DATOS DE QUIEN ENVÍA (REMITENTE)</h2>
@@ -236,8 +243,11 @@
         </div>
     </main>
 
-    <a href="https://wa.me/5350987817" target="_blank" rel="noopener noreferrer" class="whatsapp-float">
-        <img src="../img/whatsap.webp" alt="WhatsApp" onerror="fallbackWhatsApp(this)"/>
+    <!-- Botón flotante de Telegram -->
+    <a href="https://t.me/+5350987817" target="_blank" rel="noopener noreferrer" class="telegram-float" title="Contáctanos por Telegram">
+        <svg viewBox="0 0 24 24" fill="white" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/>
+        </svg>
     </a>
 
     <div class="fixed inset-0 z-[100] hidden items-center justify-center px-6" id="confirm-modal">
@@ -253,7 +263,7 @@
 
             <div class="flex flex-col md:flex-row gap-4">
                 <button class="flex-1 py-4 border border-outline-variant text-on-surface font-headline font-bold uppercase tracking-widest text-xs hover:bg-surface-container-high transition-colors" id="close-modal">Cancelar</button>
-                <button class="flex-1 py-4 bg-primary text-on-primary font-headline font-bold uppercase tracking-widest text-xs flex items-center justify-center gap-2 hover:opacity-90 transition-opacity" id="confirmar-whatsapp">
+                <button class="flex-1 py-4 bg-primary text-on-primary font-headline font-bold uppercase tracking-widest text-xs flex items-center justify-center gap-2 hover:opacity-90 transition-opacity" id="confirmar-telegram">
                     <span class="material-symbols-outlined text-sm">check_circle</span>
                     Confirmar
                 </button>
@@ -265,9 +275,28 @@
         <div class="absolute inset-0 bg-surface/95 backdrop-blur-md"></div>
         <div class="relative bg-error-container text-on-error-container border border-error w-full max-w-md p-8 text-center shadow-2xl rounded-lg">
             <span class="material-symbols-outlined text-5xl mb-4">error</span>
-            <h3 class="font-headline text-xl font-bold mb-2">Campos incompletos</h3>
+            <h3 class="font-headline text-xl font-bold mb-2">Error</h3>
             <p class="text-sm" id="error-message">Por favor completa todos los campos del formulario antes de continuar.</p>
             <button class="mt-6 px-6 py-2 bg-on-error-container text-error-container font-bold rounded" id="close-error-modal">Entendido</button>
+        </div>
+    </div>
+
+    <div class="fixed inset-0 z-[120] hidden items-center justify-center px-6" id="loading-modal">
+        <div class="absolute inset-0 bg-surface/95 backdrop-blur-md"></div>
+        <div class="relative bg-surface-container-low border border-primary/30 w-full max-w-md p-8 text-center shadow-2xl rounded-lg">
+            <span class="material-symbols-outlined text-5xl mb-4 text-primary spinner">sync</span>
+            <h3 class="font-headline text-xl font-bold mb-2 text-primary">Enviando pedido...</h3>
+            <p class="text-sm text-on-surface-variant">Por favor espera un momento.</p>
+        </div>
+    </div>
+
+    <div class="fixed inset-0 z-[130] hidden items-center justify-center px-6" id="success-modal">
+        <div class="absolute inset-0 bg-surface/95 backdrop-blur-md"></div>
+        <div class="relative bg-surface-container-low border border-primary/30 w-full max-w-md p-8 text-center shadow-2xl rounded-lg">
+            <span class="material-symbols-outlined text-5xl mb-4 text-primary">check_circle</span>
+            <h3 class="font-headline text-xl font-bold mb-2 text-primary">¡Pedido enviado!</h3>
+            <p class="text-sm text-on-surface-variant">Tu pedido ha sido enviado correctamente. Nos pondremos en contacto contigo pronto.</p>
+            <button class="mt-6 px-6 py-2 bg-primary text-on-primary font-bold rounded" id="close-success-modal">Aceptar</button>
         </div>
     </div>
 
@@ -287,15 +316,13 @@
     </footer>
 
     <script>
-        const CARRITO_STORAGE_KEY = 'triplem_carrito';
-        let todosLosProductos = [];
+        const CARRITO_STORAGE_KEY = 'triplem_carrito_online';
 
-        // Fallback para WhatsApp
-        function fallbackWhatsApp(img) {
-            img.style.display = 'none';
-            img.parentElement.style.background = '#25D366';
-            img.parentElement.innerHTML = '<span class="text-white text-2xl">💬</span>';
-        }
+        // 🔧 CONFIGURACIÓN DE TELEGRAM
+        const TELEGRAM_BOT_TOKEN = '8738249700:AAFNyeLE3PyxqYgfOg2ZoEhiWiNdyAbrV4g';
+        const TELEGRAM_CHAT_ID = '1123398150';
+
+        let todosLosProductos = [];
 
         function obtenerCarrito() {
             const carritoGuardado = localStorage.getItem(CARRITO_STORAGE_KEY);
@@ -320,18 +347,17 @@
                 const response = await fetch('../json/productos.json?nocache=' + Date.now());
                 const data = await response.json();
 
-                // ✅ Mapeo con claves en minúscula, usando precio_mayorista y filtrando precio 0
                 todosLosProductos = data
-                    .filter(item => item.precio_mayorista > 0)
+                    .filter(item => item.precio_online > 0)
                     .map(item => ({
-                        id: item.codigo,
+                        id: String(item.codigo),
                         nombre: item.nombre,
-                        precio: '$' + item.precio_mayorista.toFixed(2),
+                        precio: '$' + item.precio_online.toFixed(2),
                         imagen: '../img/' + item.codigo + '.webp',
                         familia: item.categoria || "Sin categoría",
                         cantidad: 999
                     }));
-                
+
                 renderizarCarrito();
             } catch (error) {
                 console.error('Error cargando productos:', error);
@@ -360,7 +386,7 @@
             let itemsHtml = '';
 
             carrito.items.forEach(item => {
-                const producto = todosLosProductos.find(p => p.id === item.id);
+                const producto = todosLosProductos.find(p => String(p.id) === String(item.id));
                 if (producto) {
                     const precioNumerico = extraerPrecio(producto);
                     const itemTotal = precioNumerico * item.cantidad;
@@ -402,9 +428,9 @@
         }
 
         window.cambiarCantidad = function(id, delta) {
-            id = parseInt(id);
+            id = String(id);
             const carrito = obtenerCarrito();
-            const itemIndex = carrito.items.findIndex(item => item.id === id);
+            const itemIndex = carrito.items.findIndex(item => String(item.id) === String(id));
 
             if (itemIndex !== -1) {
                 const nuevaCantidad = carrito.items[itemIndex].cantidad + delta;
@@ -440,10 +466,7 @@
             const remitenteNombre = document.getElementById('remitente_nombre').value.trim();
             const remitenteApellidos = document.getElementById('remitente_apellidos').value.trim();
 
-            if (!idCard || !firstName || !lastNames || !phone || !address || !remitenteNombre || !remitenteApellidos) {
-                return false;
-            }
-            return true;
+            return !!(idCard && firstName && lastNames && phone && address && remitenteNombre && remitenteApellidos);
         }
 
         function obtenerDatosCliente() {
@@ -476,7 +499,7 @@
             let subtotal = 0;
 
             carrito.items.forEach(item => {
-                const producto = todosLosProductos.find(p => p.id === item.id);
+                const producto = todosLosProductos.find(p => String(p.id) === String(item.id));
                 if (producto) {
                     const precioNumerico = extraerPrecio(producto);
                     const itemTotal = precioNumerico * item.cantidad;
@@ -489,36 +512,61 @@
             return resumenHtml;
         }
 
-        function generarMensajeWhatsApp(cliente) {
+        // ✅ Genera el mensaje en HTML para Telegram
+        function generarMensajeTelegram(cliente) {
             const carrito = obtenerCarrito();
-            let mensaje = '🛍️ *NUEVO PEDIDO - TRIPLE M* 🛍️%0A%0A';
-            mensaje += '👤 *DATOS DE QUIEN RECIBE:*%0A';
-            mensaje += '📄 CI: ' + cliente.id_card + '%0A';
-            mensaje += '✏️ Nombre: ' + cliente.first_name + '%0A';
-            mensaje += '📝 Apellidos: ' + cliente.last_names + '%0A';
-            mensaje += '📞 Teléfono: ' + cliente.phone + '%0A';
-            mensaje += '📍 Dirección: ' + cliente.address + '%0A%0A';
-            mensaje += '📤 *DATOS DE QUIEN ENVÍA (REMITENTE):*%0A';
-            mensaje += '✏️ Nombre: ' + cliente.remitente_nombre + '%0A';
-            mensaje += '📝 Apellidos: ' + cliente.remitente_apellidos + '%0A%0A';
-            mensaje += '📦 *PRODUCTOS SOLICITADOS:*%0A';
+            let mensaje = '🛍️ <b>NUEVO PEDIDO - TRIPLE M</b> 🛍️\n\n';
+            mensaje += '👤 <b>DATOS DE QUIEN RECIBE:</b>\n';
+            mensaje += '📄 CI: ' + cliente.id_card + '\n';
+            mensaje += '✏️ Nombre: ' + cliente.first_name + '\n';
+            mensaje += '📝 Apellidos: ' + cliente.last_names + '\n';
+            mensaje += '📞 Teléfono: ' + cliente.phone + '\n';
+            mensaje += '📍 Dirección: ' + cliente.address + '\n\n';
+            mensaje += '📤 <b>DATOS DE QUIEN ENVÍA (REMITENTE):</b>\n';
+            mensaje += '✏️ Nombre: ' + cliente.remitente_nombre + '\n';
+            mensaje += '📝 Apellidos: ' + cliente.remitente_apellidos + '\n\n';
+            mensaje += '📦 <b>PRODUCTOS SOLICITADOS:</b>\n';
 
             let subtotal = 0;
             carrito.items.forEach(item => {
-                const producto = todosLosProductos.find(p => p.id === item.id);
+                const producto = todosLosProductos.find(p => String(p.id) === String(item.id));
                 if (producto) {
                     const precioNumerico = extraerPrecio(producto);
                     const itemTotal = precioNumerico * item.cantidad;
                     subtotal += itemTotal;
-                    mensaje += '• ' + producto.nombre + ' - ' + item.cantidad + ' x ' + producto.precio + ' = *$' + itemTotal.toFixed(2) + '*%0A';
+                    mensaje += '• ' + producto.nombre + ' - ' + item.cantidad + ' x ' + producto.precio + ' = <b>$' + itemTotal.toFixed(2) + '</b>\n';
                 }
             });
 
-            mensaje += '%0A💰 *TOTAL DEL PEDIDO: $' + subtotal.toFixed(2) + '*%0A%0A';
-            mensaje += '🚚 *Domicilio: (Costo adicional)*%0A%0A';
+            mensaje += '\n💰 <b>TOTAL DEL PEDIDO: $' + subtotal.toFixed(2) + '</b>\n\n';
+            mensaje += '🚚 <b>Domicilio:</b> (Costo adicional)\n\n';
             mensaje += '🙏 ¡Gracias por su compra!';
 
             return mensaje;
+        }
+
+        // ✅ Envía el mensaje a Telegram
+        async function enviarPedidoTelegram(cliente) {
+            const mensaje = generarMensajeTelegram(cliente);
+            const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    chat_id: TELEGRAM_CHAT_ID,
+                    text: mensaje,
+                    parse_mode: 'HTML'
+                })
+            });
+
+            const data = await response.json();
+            if (!data.ok) {
+                throw new Error(data.description || 'Error al enviar a Telegram');
+            }
+            return data;
         }
 
         function mostrarError(mensaje) {
@@ -530,13 +578,33 @@
             document.body.style.overflow = 'hidden';
         }
 
+        function mostrarLoading(mostrar) {
+            const loadingModal = document.getElementById('loading-modal');
+            if (mostrar) {
+                loadingModal.classList.remove('hidden');
+                loadingModal.classList.add('flex');
+                document.body.style.overflow = 'hidden';
+            } else {
+                loadingModal.classList.add('hidden');
+                loadingModal.classList.remove('flex');
+            }
+        }
+
+        function mostrarExito() {
+            const successModal = document.getElementById('success-modal');
+            successModal.classList.remove('hidden');
+            successModal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
         const openBtn = document.getElementById('open-modal');
         const closeBtn = document.getElementById('close-modal');
         const modal = document.getElementById('confirm-modal');
         const vaciarBtn = document.getElementById('vaciar-carrito');
-        const confirmarWhatsApp = document.getElementById('confirmar-whatsapp');
+        const confirmarTelegram = document.getElementById('confirmar-telegram');
         const closeErrorBtn = document.getElementById('close-error-modal');
         const errorModal = document.getElementById('error-modal');
+        const closeSuccessBtn = document.getElementById('close-success-modal');
 
         if (openBtn) {
             openBtn.addEventListener('click', function() {
@@ -579,20 +647,44 @@
             vaciarBtn.addEventListener('click', vaciarCarrito);
         }
 
-        if (confirmarWhatsApp) {
-            confirmarWhatsApp.addEventListener('click', function() {
+        // ✅ Confirmar y enviar a Telegram
+        if (confirmarTelegram) {
+            confirmarTelegram.addEventListener('click', async function() {
                 const cliente = obtenerDatosCliente();
-                const mensaje = generarMensajeWhatsApp(cliente);
-                const url = 'https://wa.me/5350987817?text=' + mensaje;
 
-                guardarCarrito({ items: [] });
-                renderizarCarrito();
-
+                // Cerrar modal de confirmación
                 modal.classList.add('hidden');
                 modal.classList.remove('flex');
-                document.body.style.overflow = 'auto';
 
-                window.open(url, '_blank');
+                // Mostrar loading
+                mostrarLoading(true);
+
+                try {
+                    await enviarPedidoTelegram(cliente);
+
+                    // Éxito: vaciar carrito
+                    guardarCarrito({ items: [] });
+                    renderizarCarrito();
+
+                    mostrarLoading(false);
+                    mostrarExito();
+                } catch (error) {
+                    console.error('Error enviando pedido:', error);
+                    mostrarLoading(false);
+                    document.body.style.overflow = 'auto';
+                    mostrarError('Hubo un problema al enviar el pedido. Por favor intenta de nuevo.\n\nDetalle: ' + error.message);
+                }
+            });
+        }
+
+        if (closeSuccessBtn) {
+            closeSuccessBtn.addEventListener('click', function() {
+                const successModal = document.getElementById('success-modal');
+                successModal.classList.add('hidden');
+                successModal.classList.remove('flex');
+                document.body.style.overflow = 'auto';
+                // Redirigir al catálogo
+                window.location.href = '../index.html';
             });
         }
 
@@ -610,12 +702,10 @@
             });
         }
 
-        // Manejar el botón de atrás en el teléfono
         window.addEventListener('popstate', function(event) {
             window.location.href = '../index.html';
         });
 
-        // Crear entrada en el historial para activar popstate
         window.history.pushState({ page: 'carrito' }, '', window.location.href);
 
         cargarProductos();
