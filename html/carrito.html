@@ -168,7 +168,7 @@
                         <span class="w-8 h-[1px] bg-primary"></span>
                         <h2 class="font-label text-xs uppercase tracking-[0.3em] text-primary">DATOS DE QUIEN RECIBE LA COMPRA</h2>
                     </div>
-                    <form class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10" id="clienteForm">
+                    <form class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10" id="clienteForm" accept-charset="UTF-8">
                         <div class="relative group">
                             <input class="block w-full px-0 py-2 bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-primary text-on-surface transition-all" id="id_card" name="id_card" placeholder=" " type="text"/>
                             <label class="absolute left-0 top-2 text-on-surface-variant transition-all pointer-events-none origin-left" for="id_card">Carnet de Identidad *</label>
@@ -195,7 +195,7 @@
                         <span class="w-8 h-[1px] bg-primary"></span>
                         <h2 class="font-label text-xs uppercase tracking-[0.3em] text-primary">DATOS DE QUIEN ENVÍA (REMITENTE)</h2>
                     </div>
-                    <form class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10" id="remitenteForm">
+                    <form class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10" id="remitenteForm" accept-charset="UTF-8">
                         <div class="relative group">
                             <input class="block w-full px-0 py-2 bg-transparent border-0 border-b border-outline-variant focus:ring-0 focus:border-primary text-on-surface transition-all" id="remitente_nombre" name="remitente_nombre" placeholder=" " type="text"/>
                             <label class="absolute left-0 top-2 text-on-surface-variant transition-all pointer-events-none origin-left" for="remitente_nombre">Nombre del remitente *</label>
@@ -512,7 +512,6 @@
             return resumenHtml;
         }
 
-        // ✅ Genera el mensaje en HTML para Telegram
         function generarMensajeTelegram(cliente) {
             const carrito = obtenerCarrito();
             let mensaje = '🛍️ <b>NUEVO PEDIDO - TRIPLE M</b> 🛍️\n\n';
@@ -545,7 +544,6 @@
             return mensaje;
         }
 
-        // ✅ Envía el mensaje a Telegram
         async function enviarPedidoTelegram(cliente) {
             const mensaje = generarMensajeTelegram(cliente);
             const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
@@ -647,22 +645,18 @@
             vaciarBtn.addEventListener('click', vaciarCarrito);
         }
 
-        // ✅ Confirmar y enviar a Telegram
         if (confirmarTelegram) {
             confirmarTelegram.addEventListener('click', async function() {
                 const cliente = obtenerDatosCliente();
 
-                // Cerrar modal de confirmación
                 modal.classList.add('hidden');
                 modal.classList.remove('flex');
 
-                // Mostrar loading
                 mostrarLoading(true);
 
                 try {
                     await enviarPedidoTelegram(cliente);
 
-                    // Éxito: vaciar carrito
                     guardarCarrito({ items: [] });
                     renderizarCarrito();
 
@@ -683,7 +677,6 @@
                 successModal.classList.add('hidden');
                 successModal.classList.remove('flex');
                 document.body.style.overflow = 'auto';
-                // Redirigir al catálogo
                 window.location.href = '../index.html';
             });
         }
