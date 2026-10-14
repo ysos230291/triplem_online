@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html class="dark" lang="en">
+<html class="dark" lang="es">
 <head>
     <meta charset="utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     
     <!-- 🔥 DESHABILITAR CACHÉ COMPLETAMENTE 🔥 -->
@@ -280,7 +281,7 @@
         <section class="mb-10">
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
                 <div class="max-w-2xl">
-                    <h1 class="font-headline text-5xl md:text-7xl font-extrabold tracking-tight mb-4" id="mainTitle">CATEGORIAS</h1>
+                    <h1 class="font-headline text-5xl md:text-7xl font-extrabold tracking-tight mb-4" id="mainTitle">CATEGORÍAS</h1>
                     <p class="text-on-surface-variant body-lg max-w-lg leading-relaxed" id="subtitle">Explora nuestras categorías</p>
                 </div>
                 <div class="w-full md:w-96 relative group">
@@ -365,7 +366,7 @@
             actualizarContadorCarrito();
         }
 
-        // ✅ CAMBIO: solo cuenta productos DIFERENTES (items únicos)
+        // ✅ Solo cuenta productos DIFERENTES (items únicos)
         function actualizarContadorCarrito() {
             const carrito = obtenerCarrito();
             const totalItemsUnicos = carrito.items.length;
@@ -537,7 +538,7 @@
             searchResultsCount.classList.add('hidden');
             
             if (familiaActiva === null) {
-                mainTitle.textContent = "CATEGORIAS";
+                mainTitle.textContent = "CATEGORÍAS";
                 subtitle.textContent = "Explora nuestras categorías";
                 backButtonContainer.classList.add('hidden');
                 renderFamilias();
