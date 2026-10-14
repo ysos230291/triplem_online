@@ -18,6 +18,7 @@
     
     <!-- 🔥 CARGAR TODO CON TIMESTAMP PARA EVITAR CACHÉ 🔥 -->
     <script>
+
         (function() {
             const ts = Date.now();
             document.addEventListener('DOMContentLoaded', function() {
@@ -334,6 +335,43 @@
     </footer>
 
     <script>
+        // ===== Utilidades de texto (tildes, ñ, símbolos) =====
+        function escapeHTML(s) {
+            return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+        }
+        function normalizarTexto(s) {
+            // minúsculas y sin tildes (la ñ se conserva distinta de la n)
+            return String(s == null ? '' : s).normalize('NFD')
+                .replace(/n\u0303/g, '\u0001').replace(/[\u0300-\u036f]/g, '')
+                .replace(/\u0001/g, 'ñ').toLowerCase();
+        }
+        function quitarTildes(s) {
+            return String(s == null ? '' : s).normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        }
+        // Si no existe "img/PERFUMERÍA.webp" prueba "img/PERFUMERIA.webp"; si tampoco, muestra un icono
+        function imgFamiliaError(img) {
+            const fam = img.dataset.familia || '';
+            const alt = quitarTildes(fam);
+            if (!img.dataset.intento && alt !== fam) {
+                img.dataset.intento = '1';
+                img.src = 'img/' + encodeURIComponent(alt) + '.webp';
+                return;
+            }
+            img.onerror = null;
+            img.parentElement.innerHTML = '<div class="absolute inset-0 flex items-center justify-center bg-surface-container-high"><span class="material-symbols-outlined fallback-icon">category</span></div>';
+        }
+
+        async function fetchJSONUtf8(url, opts) {
+            // Lee los bytes y decodifica como UTF-8; si el archivo está en ANSI/Latin-1 usa windows-1252
+            const r = await fetch(url, opts);
+            if (!r.ok) throw new Error('HTTP ' + r.status);
+            const buf = await r.arrayBuffer();
+            let txt;
+            try { txt = new TextDecoder('utf-8', { fatal: true }).decode(buf); }
+            catch (e) { txt = new TextDecoder('windows-1252').decode(buf); }
+            return JSON.parse(txt.replace(/^\uFEFF/, ''));
+        }
+
         // CONSTANTES
         const CARRITO_STORAGE_KEY = 'triplem_carrito_online';
         
@@ -441,18 +479,19 @@
             
             const familiasHTML = familiasAMostrar.map(familia => {
                 const cantidadProductos = todosLosProductos.filter(p => p.familia === familia).length;
-                const imagenPath = `img/${familia}.webp?t=${Date.now()}`;
+                const imagenPath = `img/${encodeURIComponent(familia)}.webp?t=${Date.now()}`;
                 
                 return `
-                    <article class="family-card group bg-surface-container-low rounded-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20" data-familia="${familia}">
+                    <article class="family-card group bg-surface-container-low rounded-xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20" data-familia="${escapeHTML(familia)}">
                         <div class="relative aspect-[4/3] bg-gradient-to-br from-surface-container-high to-surface-container overflow-hidden flex items-center justify-center p-4">
-                            <img src="${imagenPath}" 
-                                 alt="${familia}" 
+                            <img src="${imagenPath}" data-familia="${escapeHTML(familia)}"
+                                 alt="${escapeHTML(familia)}" 
                                  class="family-image w-full h-full object-contain"
-                                 onerror="this.onerror=null; this.parentElement.innerHTML = '<div class=\\'absolute inset-0 flex items-center justify-center bg-surface-container-high\\'><span class=\\'material-symbols-outlined fallback-icon\\'>category</span></div>';">
+                                 onerror="imgFamiliaError(this)">
+                        </div>';">
                         </div>
                         <div class="p-6 text-center">
-                            <h3 class="font-headline text-2xl font-bold tracking-tight text-primary">${familia}</h3>
+                            <h3 class="font-headline text-2xl font-bold tracking-tight text-primary">${escapeHTML(familia)}</h3>
                             <p class="text-on-surface-variant mt-2 text-sm">${cantidadProductos} ${cantidadProductos === 1 ? 'producto' : 'productos'}</p>
                         </div>
                     </article>
@@ -493,7 +532,7 @@
             const productosHTML = productos.map(p => `
                 <article class="product-card group" data-id="${p.id}">
                     <div class="relative aspect-[4/5] bg-surface-container-low overflow-hidden p-4 mb-6 rounded-lg flex items-center justify-center">
-                        <img alt="${p.nombre}" class="product-image w-full h-full object-contain group-hover:scale-105 transition-transform duration-700" src="${p.imagen}?t=${timestamp}" onerror="this.src='https://placehold.co/600x800?text=Triple+M'"/>
+                        <img alt="${escapeHTML(p.nombre)}" class="product-image w-full h-full object-contain group-hover:scale-105 transition-transform duration-700" src="${p.imagen}?t=${timestamp}" onerror="this.src='https://placehold.co/600x800?text=Triple+M'"/>
                     </div>
                     <div class="quantity-selector">
                         <button class="quantity-btn" onclick="cambiarCantidad('${p.id}', -1)">−</button>
@@ -503,7 +542,7 @@
                     <div class="flex flex-col gap-2 mb-4">
                         <h3 class="font-headline text-xl font-bold tracking-tight text-on-surface">${p.nombre}</h3>
                         <p class="text-primary font-semibold text-lg">${p.precio}</p>
-                        <p class="text-primary/70 font-semibold text-sm uppercase tracking-wide">${p.familia}</p>
+                        <p class="text-primary/70 font-semibold text-sm uppercase tracking-wide">${escapeHTML(p.familia)}</p>
                     </div>
                     <button class="w-full py-4 bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold uppercase tracking-widest text-xs hover:brightness-110 active:scale-95 transition-all" onclick="agregarAlCarrito('${p.id}')">AGREGAR AL CARRITO</button>
                 </article>
@@ -520,14 +559,15 @@
 
         // --- Vista actual ---
         function actualizarVistaSegunEstado() {
-            const busqueda = searchInput.value.trim().toLowerCase();
+            const busquedaOriginal = searchInput.value.trim();
+            const busqueda = normalizarTexto(busquedaOriginal);
             
             if (busqueda !== '') {
                 busquedaActiva = true;
                 const productosFiltrados = todosLosProductos.filter(p => 
-                    p.nombre.toLowerCase().includes(busqueda)
+                    normalizarTexto(p.nombre).includes(busqueda)
                 );
-                mainTitle.textContent = `Resultados para "${busqueda}"`;
+                mainTitle.textContent = `Resultados para "${busquedaOriginal}"`;
                 subtitle.textContent = `Encontramos ${productosFiltrados.length} ${productosFiltrados.length === 1 ? 'producto' : 'productos'}`;
                 backButtonContainer.classList.add('hidden');
                 renderProductos(productosFiltrados);
@@ -605,16 +645,13 @@
                 const timestamp = Date.now();
                 const url = `json/productos.json?nocache=${timestamp}`;
                 
-                const response = await fetch(url, {
+                const data = await fetchJSONUtf8(url, {
                     cache: 'no-store',
                     headers: {
                         'Cache-Control': 'no-cache, no-store, must-revalidate',
                         'Pragma': 'no-cache'
                     }
                 });
-                
-                if (!response.ok) throw new Error(`HTTP ${response.status}`);
-                const data = await response.json();
                 
                 if (!Array.isArray(data)) {
                     throw new Error('Formato JSON inválido: se esperaba un array');
@@ -632,7 +669,7 @@
                     }));
                 
                 const familiasSet = new Set(todosLosProductos.map(p => p.familia).filter(f => f && f.trim()));
-                familiasUnicas = Array.from(familiasSet).sort();
+                familiasUnicas = Array.from(familiasSet).sort((a, b) => a.localeCompare(b, 'es'));
                 
                 window.todosLosProductos = todosLosProductos;
                 window.cantidadesProductos = {};
