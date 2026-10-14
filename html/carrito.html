@@ -316,6 +316,27 @@
     </footer>
 
     <script>
+        // ===== Utilidades de texto (tildes, ñ, símbolos) =====
+        function escapeHTML(s) {
+            return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+        }
+        function normalizarTexto(s) {
+            // minúsculas y sin tildes (la ñ se conserva distinta de la n)
+            return String(s == null ? '' : s).normalize('NFD')
+                .replace(/n\u0303/g, '\u0001').replace(/[\u0300-\u036f]/g, '')
+                .replace(/\u0001/g, 'ñ').toLowerCase();
+        }
+        async function fetchJSONUtf8(url, opts) {
+            // Lee los bytes y decodifica como UTF-8; si el archivo está en ANSI/Latin-1 usa windows-1252
+            const r = await fetch(url, opts);
+            if (!r.ok) throw new Error('HTTP ' + r.status);
+            const buf = await r.arrayBuffer();
+            let txt;
+            try { txt = new TextDecoder('utf-8', { fatal: true }).decode(buf); }
+            catch (e) { txt = new TextDecoder('windows-1252').decode(buf); }
+            return JSON.parse(txt.replace(/^\uFEFF/, ''));
+        }
+
         const CARRITO_STORAGE_KEY = 'triplem_carrito_online';
 
         // 🔧 CONFIGURACIÓN DE TELEGRAM
@@ -344,8 +365,7 @@
 
         async function cargarProductos() {
             try {
-                const response = await fetch('../json/productos.json?nocache=' + Date.now());
-                const data = await response.json();
+                const data = await fetchJSONUtf8('../json/productos.json?nocache=' + Date.now());
 
                 todosLosProductos = data
                     .filter(item => item.precio_online > 0)
@@ -395,11 +415,11 @@
                     itemsHtml += `
                         <div class="flex gap-4" data-id="${item.id}">
                             <div class="w-20 h-24 bg-surface-container-highest overflow-hidden rounded flex items-center justify-center p-1">
-                                <img class="cart-item-image" src="${producto.imagen}" alt="${producto.nombre}" onerror="this.src='https://placehold.co/80x96?text=Triple+M'"/>
+                                <img class="cart-item-image" src="${producto.imagen}" alt="${escapeHTML(producto.nombre)}" onerror="this.src='https://placehold.co/80x96?text=Triple+M'"/>
                             </div>
                             <div class="flex-1 flex flex-col justify-between py-1">
                                 <div>
-                                    <h3 class="font-headline text-sm font-semibold tracking-wide uppercase">${producto.nombre}</h3>
+                                    <h3 class="font-headline text-sm font-semibold tracking-wide uppercase">${escapeHTML(producto.nombre)}</h3>
                                     <p class="text-xs text-primary mt-1">${producto.precio} c/u</p>
                                 </div>
                                 <div class="flex items-center justify-between">
@@ -487,13 +507,13 @@
             let resumenHtml = '<div class="space-y-2">';
 
             resumenHtml += '<p class="font-bold text-primary">👤 RECIBE:</p>';
-            resumenHtml += '<p class="text-sm">📄 CI: ' + cliente.id_card + '</p>';
-            resumenHtml += '<p class="text-sm">✏️ ' + cliente.first_name + ' ' + cliente.last_names + '</p>';
-            resumenHtml += '<p class="text-sm">📞 ' + cliente.phone + '</p>';
-            resumenHtml += '<p class="text-sm">📍 ' + cliente.address + '</p>';
+            resumenHtml += '<p class="text-sm">📄 CI: ' + escapeHTML(cliente.id_card) + '</p>';
+            resumenHtml += '<p class="text-sm">✏️ ' + escapeHTML(cliente.first_name) + ' ' + escapeHTML(cliente.last_names) + '</p>';
+            resumenHtml += '<p class="text-sm">📞 ' + escapeHTML(cliente.phone) + '</p>';
+            resumenHtml += '<p class="text-sm">📍 ' + escapeHTML(cliente.address) + '</p>';
 
             resumenHtml += '<p class="font-bold text-primary mt-4">📤 REMITENTE:</p>';
-            resumenHtml += '<p class="text-sm">✏️ ' + cliente.remitente_nombre + ' ' + cliente.remitente_apellidos + '</p>';
+            resumenHtml += '<p class="text-sm">✏️ ' + escapeHTML(cliente.remitente_nombre) + ' ' + escapeHTML(cliente.remitente_apellidos) + '</p>';
 
             resumenHtml += '<p class="font-bold text-primary mt-4">🛒 PRODUCTOS:</p>';
             let subtotal = 0;
@@ -504,7 +524,7 @@
                     const precioNumerico = extraerPrecio(producto);
                     const itemTotal = precioNumerico * item.cantidad;
                     subtotal += itemTotal;
-                    resumenHtml += '<p class="text-sm">• ' + producto.nombre + ' x' + item.cantidad + ' = <span class="text-primary font-bold">$' + itemTotal.toFixed(2) + '</span></p>';
+                    resumenHtml += '<p class="text-sm">• ' + escapeHTML(producto.nombre) + ' x' + item.cantidad + ' = <span class="text-primary font-bold">$' + itemTotal.toFixed(2) + '</span></p>';
                 }
             });
 
@@ -516,14 +536,14 @@
             const carrito = obtenerCarrito();
             let mensaje = '🛍️ <b>NUEVO PEDIDO - TRIPLE M</b> 🛍️\n\n';
             mensaje += '👤 <b>DATOS DE QUIEN RECIBE:</b>\n';
-            mensaje += '📄 CI: ' + cliente.id_card + '\n';
-            mensaje += '✏️ Nombre: ' + cliente.first_name + '\n';
-            mensaje += '📝 Apellidos: ' + cliente.last_names + '\n';
-            mensaje += '📞 Teléfono: ' + cliente.phone + '\n';
-            mensaje += '📍 Dirección: ' + cliente.address + '\n\n';
+            mensaje += '📄 CI: ' + escapeHTML(cliente.id_card) + '\n';
+            mensaje += '✏️ Nombre: ' + escapeHTML(cliente.first_name) + '\n';
+            mensaje += '📝 Apellidos: ' + escapeHTML(cliente.last_names) + '\n';
+            mensaje += '📞 Teléfono: ' + escapeHTML(cliente.phone) + '\n';
+            mensaje += '📍 Dirección: ' + escapeHTML(cliente.address) + '\n\n';
             mensaje += '📤 <b>DATOS DE QUIEN ENVÍA (REMITENTE):</b>\n';
-            mensaje += '✏️ Nombre: ' + cliente.remitente_nombre + '\n';
-            mensaje += '📝 Apellidos: ' + cliente.remitente_apellidos + '\n\n';
+            mensaje += '✏️ Nombre: ' + escapeHTML(cliente.remitente_nombre) + '\n';
+            mensaje += '📝 Apellidos: ' + escapeHTML(cliente.remitente_apellidos) + '\n\n';
             mensaje += '📦 <b>PRODUCTOS SOLICITADOS:</b>\n';
 
             let subtotal = 0;
@@ -533,7 +553,7 @@
                     const precioNumerico = extraerPrecio(producto);
                     const itemTotal = precioNumerico * item.cantidad;
                     subtotal += itemTotal;
-                    mensaje += '• ' + producto.nombre + ' - ' + item.cantidad + ' x ' + producto.precio + ' = <b>$' + itemTotal.toFixed(2) + '</b>\n';
+                    mensaje += '• ' + escapeHTML(producto.nombre) + ' - ' + item.cantidad + ' x ' + producto.precio + ' = <b>$' + itemTotal.toFixed(2) + '</b>\n';
                 }
             });
 
